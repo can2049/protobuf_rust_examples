@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package demo.v1;
+
+// 覆盖 proto3 全部标量类型，用于对照 wire format 的编码差异
+message AllScalars {
+  double double_val = 1;
+  float float_val = 2;
+  int32 int32_val = 3;
+  int64 int64_val = 4;
+  uint32 uint32_val = 5;
+  uint64 uint64_val = 6;
+  sint32 sint32_val = 7;
+  sint64 sint64_val = 8;
+  fixed32 fixed32_val = 9;
+  fixed64 fixed64_val = 10;
+  sfixed32 sfixed32_val = 11;
+  sfixed64 sfixed64_val = 12;
+  bool bool_val = 13;
+  string string_val = 14;
+  bytes bytes_val = 15;
+}
+
+// proto3 optional = 显式 presence：区分「没设置」和「设成了零值」
+message PresenceDemo {
+  int32 plain_int32 = 1;
+  optional int32 opt_int32 = 2;
+  string plain_string = 3;
+  optional string opt_string = 4;
+  optional bool opt_bool = 5;
+}

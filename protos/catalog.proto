@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package demo.v1;
+
+// 跨文件引用：import 路径相对于 --proto_path（这里是 crate 根目录）
+import "protos/person.proto";
+
+message Team {
+  string name = 1;
+  repeated Person members = 2;
+  map<string, Person> roster = 3;
+}

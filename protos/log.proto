@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package demo.v1;
+
+// 用于演示 length-delimited 分帧读写（一条日志一条消息）
+message LogRecord {
+  int64 ts_millis = 1;
+  string level = 2;
+  string message = 3;
+}

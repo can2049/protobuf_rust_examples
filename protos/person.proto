@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package demo.v1;
+
+import "google/protobuf/timestamp.proto";
+
+enum Color {
+  COLOR_UNSPECIFIED = 0;
+  RED = 1;
+  GREEN = 2;
+  BLUE = 3;
+}
+
+message Point {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message Person {
+  // 嵌套 message：生成后位于 `person` 子模块里
+  message Address {
+    string city = 1;
+    string street = 2;
+  }
+
+  string name = 1;
+  int32 id = 2;
+  // proto3 里 optional 才是「显式 presence」，未设置与设为零值可区分
+  optional string email = 3;
+  repeated string tags = 4;
+  Color fav_color = 5;
+  Point home = 6;
+  map<string, int32> scores = 7;
+  google.protobuf.Timestamp created_at = 8;
+  Address work = 9;
+  bytes avatar = 10;
+
+  oneof contact {
+    string phone = 11;
+    string address = 12;
+  }
+}

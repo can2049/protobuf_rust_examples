@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package demo.v1;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/wrappers.proto";
+
+// 常用 well-known types（WKT）。运行时绑定来自 protobuf-well-known-types crate。
+message AnyThing {
+  google.protobuf.Any any = 1;
+  google.protobuf.Duration duration = 2;
+  google.protobuf.Struct object = 3;
+  google.protobuf.StringValue string_value = 4;
+  google.protobuf.Int32Value int32_value = 5;
+  google.protobuf.Empty nothing = 6;
+  google.protobuf.FieldMask mask = 7;
+}

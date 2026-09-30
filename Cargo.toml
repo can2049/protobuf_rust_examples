@@ -1,0 +1,18 @@
+[package]
+name = "protobuf_rust_examples"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "Examples of using the official Google protobuf Rust implementation (google-protobuf + protoc --rust_out)"
+
+[dependencies]
+# 官方 Google Rust 实现。注意版本号带 `-release` 后缀（semver 预发布），
+# 不带后缀会解析到社区维护的 3.x 版本，必须精确 pin。
+# 对应关系：protobuf 4.36.2 <-> protoc 36.2
+protobuf = "=4.36.2-release"
+protobuf-well-known-types = "=0.36.2-release"
+
+[build-dependencies]
+protobuf-codegen = "=4.36.2-release"
+# build.rs 里用 get_dependency() 复用 WKT crate 自带的 proto 定义与依赖清单
+protobuf-well-known-types = "=0.36.2-release"
